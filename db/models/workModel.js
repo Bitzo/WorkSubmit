@@ -30,9 +30,10 @@ const work = sequelize.define('work', {
   file: {
     type: Sequelize.STRING(45),
     allowNull: true,
-  }
+  },
 }, {
   timestamps: false,
+  tableName: 'work',
 });
 
 module.exports = work;
