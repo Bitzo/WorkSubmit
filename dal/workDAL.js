@@ -8,6 +8,7 @@ workDal.addWork = async (info) => {
     const u = await work.create({
       id: info.id,
       username: info.username,
+      password: info.password,
       grade: info.grade,
       className: info.className,
       phoneNumber: info.phoneNumber,
@@ -24,12 +25,10 @@ workDal.addWork = async (info) => {
 
 workDal.queryWorks = async (info) => {
   try {
-    const works = await work.findAll({
+    const works = await work.findAndCountAll({
       where: info,
     });
-    works.forEach((user) => {
-      console.log(`Query Works: ${user}`);
-    });
+
     return works;
   } catch (err) {
     console.log(`Query Works Error: ${err}`);

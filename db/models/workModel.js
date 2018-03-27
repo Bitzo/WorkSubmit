@@ -11,6 +11,10 @@ const work = sequelize.define('work', {
     type: Sequelize.STRING(45),
     allowNull: false,
   },
+  password: {
+    type: Sequelize.STRING(100),
+    allowNull: false,
+  },
   grade: {
     type: Sequelize.STRING(45),
     allowNull: false,

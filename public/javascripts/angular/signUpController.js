@@ -58,8 +58,8 @@ myApp.controller('signUpController', function($scope, $http) {
           data: $scope.form
       }).then(function success(response) {
           if(response.data.isSuccess) {
-              $('#input-id').fileinput('upload');
-              alert(response.data.msg)
+            alert('报名成功， 将为您自动登录，登陆后请提交作品文件。');
+            location.href = './home';
           }else{
               alert(response.data.msg)
           }
@@ -87,7 +87,7 @@ myApp.controller('signUpController', function($scope, $http) {
           }
       }).then(function success(response) {
           if(response.data.isSuccess) {
-              alert(response.data.msg)
+            alert(response.data.msg)
           }else{
               alert(response.data.msg)
           }
