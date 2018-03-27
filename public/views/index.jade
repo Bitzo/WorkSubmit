@@ -9,9 +9,8 @@ block content
         div.taffeitDesc
           h2 Taffeit 科技社
           h3 软件设计大赛
-
-      div.progress
-        div.progress-bar.progress-bar-info(style="width: 0%;")
+      hr
+      br
       div.signUpForm()
         form(name="myForm" ng-submit="submit()")
           div.form-group
@@ -19,6 +18,12 @@ block content
             input.form-control(type="text" id="id" name="id" placeholder="学号" ng-minlength="10" ng-maxlength="10" ng-model="form.id" required)
             small.errorNotice(ng-if="myForm.id.$error.minlength && myForm.id.$touched") 请正确输入十位学号
             small.errorNotice(ng-if="myForm.id.$error.maxlength && myForm.id.$touched") 请正确输入十位学号
+          
+          div.form-group
+            label(for='password') 密码 *
+            input.form-control(type='password', name='password' placeholder='输入密码' ng-minlength="8" ng-maxlength="16" ng-model="form.password" required) 
+            small.errorNotice(ng-if="myForm.password.$error.minlength && myForm.password.$touched") 密码长度不能少于8位
+            small.errorNotice(ng-if="myForm.password.$error.maxlength && myForm.password.$touched") 密码长度不能多余16位
               
           div.form-group
             label(for="username") 姓名 *
@@ -31,6 +36,7 @@ block content
             select.form-control(id="grade" name="grade" ng-model="form.grade" required)
               option(value="2017") 2017
               option(value="2016") 2016
+          
           div.form-group
             label(for="className") 班级 *
             input.form-control(type="text" id="className" name="className" placeholder="班级（如：16软件工程（嵌入式培养）2班）" ng-model="form.className" ng-minlength="5" ng-maxlength="20" required)
@@ -47,13 +53,11 @@ block content
             input.form-control(type="email" id="email" name="email" placeholder="邮箱" ng-model="form.email" required)
             small.errorNotice(ng-if="myForm.email.$error.required && myForm.email.$touched") 请填写邮箱
             small.errorNotice(ng-if="myForm.email.$error.email && myForm.email.$touched") 请填写正确的邮箱
-            
-          div.form-group
-            label(for="input-id") 上传项目 (请压缩后上传，文件不超过20M)
-            input(id="input-id" type="file" class="file" data-preview-file-type="text" required)
-        
+          
           div.form-group
             button.btn.btn-large.btn-block.btn-primary(type="submit") 确认提交
+          div.form-group
+            button.btn.btn-large.btn-block.btn-info(ng-click="relocate_home('./login')") 直接登录
       br
       br
       div.contact

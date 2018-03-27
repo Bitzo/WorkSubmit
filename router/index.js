@@ -1,11 +1,19 @@
 const Router = require('koa-router');
-const usersRouter = require('./api/users');
+const workRouter = require('./api/works');
 
 const router = new Router();
 
 router.get('/', (ctx) => {
   ctx.status = 200;
   return ctx.render('index', {
+    title: 'Home',
+    name: 'Bitzo',
+  });
+});
+
+router.get('/login', (ctx) => {
+  ctx.status = 200;
+  return ctx.render('login', {
     title: 'Home',
     name: 'Bitzo',
   });
@@ -44,6 +52,6 @@ router.get('/home', (ctx) => {
   });
 });
 
-router.use('/api', usersRouter.routes());
+router.use('/api', workRouter.routes());
 
 module.exports = router;

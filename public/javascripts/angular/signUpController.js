@@ -1,3 +1,4 @@
+/* eslint-disable */
 /**
  * @Author: bitzo
  * @Date: 17-10-4 下午3:17
@@ -24,12 +25,11 @@ myApp.controller('signUpController', function($scope, $http) {
           return data;
       },
     }).on('filepreupload', function(event, data, previewId, index) {
-        console.log(data);
-        console.log('File pre upload triggered');
-        $('#input-id').fileinput('cancel');
+
     });
 
     $scope.submit = function() {
+      console.log('submit: ===========>');
 
       console.log($scope.form)
 
@@ -70,4 +70,31 @@ myApp.controller('signUpController', function($scope, $http) {
 
       console.log($scope.form)
     }
+
+    $scope.relocate_home = function(link) {
+        $scope.form = {};
+        location.href = link;
+    };
+
+    $scope.login = function() {
+      console.log('Login: ===========>');
+      $http({
+          method: 'post',
+          url: "/api/login",
+          data: {
+            username: $scope.form.username,
+            password: $scope.form.password
+          }
+      }).then(function success(response) {
+          if(response.data.isSuccess) {
+              alert(response.data.msg)
+          }else{
+              alert(response.data.msg)
+          }
+      }, function error(response) {
+          alert(response.data.msg)
+      });
+
+      console.log($scope.form)
+    };
 });

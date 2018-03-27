@@ -2,3 +2,19 @@ extends layout
 
 block content
   h1 home page
+  div.form-group
+  div(ng-controller="signUpController")
+    div.panel.panel-default.signUpPanel
+      div.taffeitInfo
+        div.icon
+          img.logo.button-glow.button-border.button-rounded(src="/images/logo.png")
+        div.taffeitDesc
+          h2 Taffeit 科技社
+          h3 软件设计大赛
+
+      div.progress
+        div.progress-bar.progress-bar-info(style="width: 0%;")
+      div.signUpForm()
+        form(name="myForm" ng-submit="submit()")
+          label(for="input-id") 上传项目 (请压缩后上传，文件不超过20M)
+          input(id="input-id" type="file" class="file" data-preview-file-type="text" required)

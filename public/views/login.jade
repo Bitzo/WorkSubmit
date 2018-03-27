@@ -1,0 +1,35 @@
+extends layout
+
+block content
+  div.form-group
+  div(ng-controller="signUpController")
+    div.panel.panel-default.signUpPanel
+      div.taffeitInfo
+        div.icon
+          img.logo.button-glow.button-border.button-rounded(src="/images/logo.png")
+        div.taffeitDesc
+          h2 Taffeit 科技社
+          h3 软件设计大赛
+          
+      hr
+      br
+      
+      div.signUpForm()
+        form(name="myForm" ng-submit="login()")
+
+          div.form-group
+            label(for="username") 学号 *
+            input.form-control(type="text" id="username" name="username" placeholder="学号" ng-minlength="10" ng-maxlength="10" ng-model="form.username" required)
+            small.errorNotice(ng-if="myForm.username.$error.minlength && myForm.username.$touched") 请正确输入十位学号
+            small.errorNotice(ng-if="myForm.username.$error.maxlength && myForm.username.$touched") 请正确输入十位学号
+            
+          div.form-group
+            label(for='password') 密码 *
+            input.form-control(type='password', name='password' placeholder='输入密码' ng-minlength="8" ng-maxlength="16" ng-model="form.password" required) 
+            small.errorNotice(ng-if="myForm.password.$error.minlength && myForm.password.$touched") 密码长度不能少于8位
+            small.errorNotice(ng-if="myForm.password.$error.maxlength && myForm.password.$touched") 密码长度不能多余16位
+            
+          div.form-group
+            button.btn.btn-large.btn-block.btn-primary(type="submit") 登录
+            button.btn.btn-large.btn-block.btn-info(ng-click="relocate_home('./')") 返回报名
+            
