@@ -2,7 +2,7 @@ extends layout
 
 block content
   div.form-group
-  div(ng-controller="signUpController")
+  div(ng-controller="fileSubmitController")
     div.panel.panel-default.signUpPanel
       div.taffeitInfo
         div.icon
@@ -14,6 +14,8 @@ block content
       div.progress
         div.progress-bar.progress-bar-info(style="width: 0%;")
       div.signUpForm()
+        h4 {{userInfo.id}} &nbsp;&nbsp;&nbsp;&nbsp; {{userInfo.username}}
+        hr
         form(name="myForm" ng-submit="submit()")
           label(for="input-id") 上传项目 (请压缩后上传，文件不超过20M)
           input(id="input-id" type="file" class="file" data-preview-file-type="text" required)

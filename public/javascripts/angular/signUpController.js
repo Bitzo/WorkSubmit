@@ -12,22 +12,6 @@ myApp.controller('signUpController', function($scope, $http) {
     $scope.form = {};
     $scope.form.grade = '2017';
 
-    $("#input-id").fileinput({
-      language: 'zh',
-      // showUpload: false,
-      previewFileType: 'any',
-      maxFileCount: 1,
-      maxFileSize: 20 * 1024,
-      uploadUrl: '/api/signUp/file',
-      allowedFileExtensions: ['zip', '7z', 'rar'],
-      uploadExtraData: function (previewId, index) {
-          const data = $scope.form;
-          return data;
-      },
-    }).on('filepreupload', function(event, data, previewId, index) {
-
-    });
-
     $scope.submit = function() {
       console.log('submit: ===========>');
 
@@ -57,11 +41,16 @@ myApp.controller('signUpController', function($scope, $http) {
           url: "/api/signUp",
           data: $scope.form
       }).then(function success(response) {
+          console.log(response.data);
           if(response.data.isSuccess) {
+            localStorage.setItem('token', response.data.data.token);
+            localStorage.setItem('id', response.data.data.userInfo.id);
+            localStorage.setItem('username', response.data.data.userInfo.username);
+
             alert('报名成功， 将为您自动登录，登陆后请提交作品文件。');
-            location.href = './home';
+            location.href = './home?token=' +  response.data.data.token;
           }else{
-              alert(response.data.msg)
+            alert(response.data.msg)
           }
 
       }, function error(response) {
@@ -87,7 +76,12 @@ myApp.controller('signUpController', function($scope, $http) {
           }
       }).then(function success(response) {
           if(response.data.isSuccess) {
-            alert(response.data.msg)
+            localStorage.setItem('token', response.data.data.token);
+            localStorage.setItem('id', response.data.data.userInfo.id);
+            localStorage.setItem('username', response.data.data.userInfo.username);
+
+            alert(response.data.msg);
+            location.href = './home?token=' +response.data.data.token;
           }else{
               alert(response.data.msg)
           }

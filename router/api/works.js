@@ -96,7 +96,13 @@ router.post('/signUp', async (ctx) => {
   ctx.body = {
     status: 200,
     isSuccess: true,
-    data: token,
+    data: {
+      token,
+      userInfo: {
+        id,
+        username,
+      },
+    },
     msg: '报名成功',
   };
 });
@@ -123,10 +129,16 @@ router.post('/login', async (ctx) => {
   ctx.body = {
     status: 200,
     isSuccess: true,
-    data: tokenEncode({
-      id: username,
-      username: result.rows[0].username,
-    }),
+    data: {
+      token: tokenEncode({
+        id: username,
+        username: result.rows[0].username,
+      }),
+      userInfo: {
+        id: username,
+        username: result.rows[0].username,
+      },
+    },
     msg: '登录成功',
   };
 });
