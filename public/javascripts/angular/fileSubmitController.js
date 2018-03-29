@@ -18,7 +18,9 @@ myApp.controller('fileSubmitController', function($scope, $http) {
         uploadUrl: '/api/signUp/file',
         allowedFileExtensions: ['zip', '7z', 'rar'],
         uploadExtraData: function (previewId, index) {
-            const data = $scope.form;
+            const data = {
+              token: localStorage.getItem("token"),
+            };
             return data;
         },
       }).on('filepreupload', function(event, data, previewId, index) {

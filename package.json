@@ -9,14 +9,17 @@
   "author": "bitzo",
   "license": "MIT",
   "dependencies": {
+    "formidable": "^1.2.1",
     "jade": "^1.11.0",
     "jsonwebtoken": "^8.2.0",
     "koa": "^2.4.1",
+    "koa-body": "^2.5.0",
     "koa-bodyparser": "^4.2.0",
     "koa-router": "^7.3.0",
     "koa-static": "^4.0.2",
     "koa-views": "^6.1.2",
     "lodash": "^4.17.5",
+    "moment": "^2.21.0",
     "mysql2": "^1.5.1",
     "sequelize": "^4.26.0",
     "validator": "^9.4.1"

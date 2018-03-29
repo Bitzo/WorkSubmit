@@ -57,7 +57,6 @@ myApp.controller('signUpController', function($scope, $http) {
           alert(response.data.msg)
       });
 
-      console.log($scope.form)
     }
 
     $scope.relocate_home = function(link) {
@@ -89,6 +88,5 @@ myApp.controller('signUpController', function($scope, $http) {
           alert(response.data.msg)
       });
 
-      console.log($scope.form)
     };
 });
